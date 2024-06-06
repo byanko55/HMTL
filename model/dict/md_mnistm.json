@@ -1,0 +1,113 @@
+{
+    "name": "MNISTM-CNN",
+    "nnet_seq":{
+        "conv1":{
+            "type": "Conv2d",
+            "params":{
+                "in_channels": 3,
+                "out_channels": 32,
+                "kernel_size": 5,
+                "padding": "same"
+            }
+        },
+        "pool1":{
+            "type": "MaxPool2d",
+            "params":{
+                "kernel_size": 2
+            }
+        },
+        "relu1":{
+            "type": "ReLU",
+            "params":{
+                "inplace": false
+            }
+        },
+        "conv2":{
+            "type": "Conv2d",
+            "params":{
+                "in_channels": 32,
+                "out_channels": 32,
+                "kernel_size": 3,
+                "padding": "same"
+            }
+        },
+        "drop1":{
+            "type": "Dropout2d",
+            "params":{
+                "p": 0.1
+            }
+        },
+        "pool2":{
+            "type": "MaxPool2d",
+            "params":{
+                "kernel_size": 2
+            }
+        },
+        "relu2":{
+            "type": "ReLU",
+            "params":{
+                "inplace": false
+            }
+        },
+        "conv3":{
+            "type": "Conv2d",
+            "params":{
+                "in_channels": 32,
+                "out_channels": 32,
+                "kernel_size": 3,
+                "padding": "same"
+            }
+        },
+        "drop2":{
+            "type": "Dropout2d",
+            "params":{
+                "p": 0.1
+            }
+        },
+        "pool3":{
+            "type": "MaxPool2d",
+            "params":{
+                "kernel_size": 2
+            }
+        },
+        "relu3":{
+            "type": "ReLU",
+            "params":{
+                "inplace": false
+            }
+        },
+        "flat":{
+            "type": "Flatten",
+            "params":{
+                "shape": [-1, 288]
+            }
+        },
+        "fc1":{
+            "type": "Linear",
+            "params":{
+                "in_features": 288,
+                "out_features": 128
+            }
+        },
+        "fc2":{
+            "type": "Linear",
+            "params":{
+                "in_features": 128,
+                "out_features": 64
+            }
+        },
+        "fc3":{
+            "type": "Linear",
+            "params":{
+                "in_features": 64,
+                "out_features": 10
+            }
+        },
+        "softmax":{
+            "type": "LogSoftmax",
+            "params":{
+                "dim": 1
+            }
+        }
+    }
+}

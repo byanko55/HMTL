@@ -1,0 +1,32 @@
+{
+    "name": "FuEncoder-Digit",
+    "nnet_seq":{
+        "conv3":{
+            "type": "Conv2d",
+            "params":{
+                "in_channels": 32,
+                "out_channels": 32,
+                "kernel_size": 3,
+                "padding": 1
+            }
+        },
+        "drop2":{
+            "type": "Dropout2d",
+            "params":{
+                "p": 0.1
+            }
+        },
+        "pool3":{
+            "type": "MaxPool2d",
+            "params":{
+                "kernel_size": 2
+            }
+        },
+        "relu3":{
+            "type": "ReLU",
+            "params":{
+                "inplace": false
+            }
+        }
+    }
+}
