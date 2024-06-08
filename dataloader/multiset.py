@@ -1,5 +1,4 @@
 from .imgset import *
-from pipeline.op import *
     
 
 class MultiSet(Dataset):
@@ -33,7 +32,7 @@ class MultiSet(Dataset):
         return imgs, labels
 
 
-class FusionLoader():
+class MultiLoader():
     """
     # In
       - data_sources: dictionary of torch.utils.data.Dataset
@@ -77,7 +76,7 @@ class FusionLoader():
     # Note
     this batch is temporary,
     which means the one used in previous training epoch will be discarded subsequently;
-    In every epochs, the 'FusionSet' creates new batch consisting arbitrary set of sample data.
+    In every epochs, the 'MultiSet' creates new batch consisting arbitrary set of sample data.
     
     # In
       - minibatch_size: 
@@ -87,10 +86,10 @@ class FusionLoader():
     """
     def trainbatch(self, minibatch_size:int = 256, sampling_rate:float = 1.0) -> DataLoader:
         if not self.lds['train']:
-            raise FusionException("[fuset: trainbatch]\'load\' the dataset first!!")
+            raise ValueError("[fuset: trainbatch]\'load\' the dataset first!!")
 
         k = int(self.nt * sampling_rate)
-        fs = FusionSet(data_sources=self.lds['train'], num_samples=k)
+        fs = MultiSet(data_sources=self.lds['train'], num_samples=k)
 
         tb = DataLoader(
             dataset=fs, 
@@ -112,7 +111,7 @@ class FusionLoader():
     """
     def evalbatch(self, ds_names:list, minibatch_size:int = 256, eval:bool = True) -> dict:
         if not self.lds['eval']:
-            raise FusionException("[fuset: evalbatch]\'load\' the dataset first!!")
+            raise ValueError("[evalbatch]\'load\' the dataset first!!")
         
         eb = {}
 
