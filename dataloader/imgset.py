@@ -148,7 +148,7 @@ class MNISTset(ImgLoader):
 # SVHN dataset
 # A digit classification benchmark dataset that contains the street view house number (SVHN) images
 # This dataset includes 99,289 32×32 RGB images of printed digits cropped from pictures of house number plates.
-class SVHNset(Dataset):
+class SVHNset(ImgLoader):
     def __init__(self, data_path="datasets", transform=None, sampling_rate=1.0):
         if transform == None :
             transform = transforms.ToTensor()
@@ -201,7 +201,7 @@ class SVHNset(Dataset):
 # This dataset is created by combining MNIST digits with the patches 
 # randomly extracted from color photos of BSDS500 as their background
 # It contains 55,000 training and 10,000 test images as well
-class MNISTMset(Dataset):
+class MNISTMset(ImgLoader):
     def __init__(self, data_path="datasets", transform=None, sampling_rate=1.0):
         mnist_path = os.path.join(data_path, 'MNIST_data/')
             
